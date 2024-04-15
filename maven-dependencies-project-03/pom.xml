@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--每次有改变都要刷新！-->
+    <modelVersion>4.0.0</modelVersion>
+    <!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， 如com.companyname.project-group，maven会将该项目打成的jar包放本地路径：/com/companyname/project-group -->
+    <groupId>com.amber</groupId>
+    <!-- 项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的 -->
+    <artifactId>maven-dependencies-project-03</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--打包方式
+           默认：jar
+           jar指的是普通的java项目打包方式！ 项目打成jar包！
+           war指的是web项目打包方式！项目打成war包！
+           pom不会讲项目打包！这个项目作为父工程，被其他工程聚合或者继承！后面会讲解两个概念
+       -->
+    <packaging>jar</packaging>
+
+    <properties>
+        <!--命名随便,内部制定版本号即可！把它当作一个常量-->
+        <junit.version>4.13.2</junit.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <!--
+   通过编写依赖jar包的gav必要属性，引入第三方依赖！
+   scope属性是可选的，可以指定依赖生效范围！
+   依赖信息查询方式：
+      1. maven仓库信息官网 https://mvnrepository.com/
+      2. maven-search插件搜索,在plugins里面下载，然后右键就能找到了，复制信息即可
+ -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <!--
+            生效范围
+            - compile ：main目录 test目录  打包打包 [默认]
+            - provided：main目录 test目录  Servlet
+            - runtime： 打包运行           MySQL
+            - test:    test目录           junit
+         -->
+            <!--一般还是用默认的compile比较稳妥-->
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
